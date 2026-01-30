@@ -49,6 +49,7 @@ CREATE TABLE `expenses` (
   `expense_date` date NOT NULL,
   `amount` decimal(10,2) NOT NULL,
   `description` varchar(255) DEFAULT NULL,
+  `store_name` varchar(100) DEFAULT NULL,
   `created_at` datetime DEFAULT current_timestamp(),
   `updated_at` datetime DEFAULT current_timestamp() ON UPDATE current_timestamp(),
   `deleted_yn` tinyint(1) DEFAULT 0

@@ -7,7 +7,8 @@ export const findAll = async () => {
       e.user_id, 
       e.expense_date, 
       e.amount, 
-      e.description, 
+      e.description,
+      e.store_name, 
       e.created_at, 
       e.updated_at,
       GROUP_CONCAT(c.name) as categories
@@ -27,7 +28,8 @@ export const findById = async (id) => {
       e.user_id, 
       e.expense_date, 
       e.amount, 
-      e.description, 
+      e.description,
+      e.store_name, 
       e.created_at, 
       e.updated_at,
       GROUP_CONCAT(c.category_id) as category_ids,
@@ -48,7 +50,8 @@ export const findByUserId = async (userId) => {
       e.user_id, 
       e.expense_date, 
       e.amount, 
-      e.description, 
+      e.description,
+      e.store_name, 
       e.created_at, 
       e.updated_at,
       GROUP_CONCAT(c.name) as categories
@@ -62,19 +65,19 @@ export const findByUserId = async (userId) => {
 };
 
 export const create = async (expenseData) => {
-  const { user_id, expense_date, amount, description } = expenseData;
+  const { user_id, expense_date, amount, description, store_name } = expenseData;
   const [result] = await db.query(
-    'INSERT INTO expenses (user_id, expense_date, amount, description) VALUES (?, ?, ?, ?)',
-    [user_id, expense_date, amount, description]
+    'INSERT INTO expenses (user_id, expense_date, amount, description, store_name) VALUES (?, ?, ?, ?, ?)',
+    [user_id, expense_date, amount, description, store_name]
   );
   return result.insertId;
 };
 
 export const update = async (id, expenseData) => {
-  const { user_id, expense_date, amount, description } = expenseData;
+  const { user_id, expense_date, amount, description, store_name } = expenseData;
   const [result] = await db.query(
-    'UPDATE expenses SET user_id = ?, expense_date = ?, amount = ?, description = ? WHERE expense_id = ? AND deleted_yn = 0',
-    [user_id, expense_date, amount, description, id]
+    'UPDATE expenses SET user_id = ?, expense_date = ?, amount = ?, description = ?, store_name = ? WHERE expense_id = ? AND deleted_yn = 0',
+    [user_id, expense_date, amount, description, store_name, id]
   );
   return result.affectedRows;
 };
