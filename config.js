@@ -15,5 +15,6 @@ export const CORS_ORIGIN = process.env.CORS_ORIGIN || [
   'http://localhost:3000', // React default
   'http://localhost:8080', // Vue default
   'http://localhost:4200',  // Angular default
-  'http://localhost:5500'
+  'http://localhost:5500',
+  'https://finance.bramvanandel.dev'
 ];
