@@ -9,6 +9,7 @@ export const register = async (req, res) => {
       secure: true, // Use secure cookies in production
       sameSite: 'none',
       maxAge: 24 * 60 * 60 * 1000, // 24 hours
+      domain: '.bramvanandel.dev',
       path: '/',
     });
     
@@ -31,6 +32,7 @@ export const login = async (req, res) => {
       secure: true, // Use secure cookies in production
       sameSite: 'none',
       maxAge: 24 * 60 * 60 * 1000, // 24 hours
+      domain: '.bramvanandel.dev',
       path: '/',
     });
     
