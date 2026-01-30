@@ -6,9 +6,10 @@ export const register = async (req, res) => {
     // Set JWT in httpOnly cookie
     res.cookie('token', result.data.token, {
       httpOnly: true,
-      secure: process.env.NODE_ENV === 'production', // Use secure cookies in production
-      sameSite: 'strict',
-      maxAge: 24 * 60 * 60 * 1000 // 24 hours
+      secure: true, // Use secure cookies in production
+      sameSite: 'none',
+      maxAge: 24 * 60 * 60 * 1000, // 24 hours
+      path: '/',
     });
     
     // Return user data (without token in response body for better security)
@@ -27,9 +28,10 @@ export const login = async (req, res) => {
     // Set JWT in httpOnly cookie
     res.cookie('token', result.data.token, {
       httpOnly: true,
-      secure: process.env.NODE_ENV === 'production', // Use secure cookies in production
-      sameSite: 'strict',
-      maxAge: 24 * 60 * 60 * 1000 // 24 hours
+      secure: true, // Use secure cookies in production
+      sameSite: 'none',
+      maxAge: 24 * 60 * 60 * 1000, // 24 hours
+      path: '/',
     });
     
     // Return user data (without token in response body for better security)
